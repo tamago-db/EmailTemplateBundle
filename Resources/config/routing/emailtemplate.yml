@@ -1,0 +1,40 @@
+ccc_email_template:
+    pattern:  /
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:index" }
+
+ccc_email_template_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:show" }
+
+ccc_email_template_new:
+    pattern:  /new
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:new" }
+
+ccc_email_template_create:
+    pattern:  /create
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:create" }
+    requirements: { _method: post }
+
+ccc_email_template_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:edit" }
+
+ccc_email_template_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:update" }
+    requirements: { _method: post|put }
+
+ccc_email_template_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:delete" }
+    requirements: { _method: post|delete }
+
+ccc_email_template_select:
+    pattern:  /select
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:select" }
+    
+ccc_email_template_json:
+    pattern:  /{id}/json
+    defaults: { _controller: "CCCEmailTemplateBundle:EmailTemplate:json" }
+    options:
+        expose: true

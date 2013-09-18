@@ -1,0 +1,5 @@
+services:
+    email_template_select.form.type:
+        class: CCC\EmailTemplateBundle\Form\Type\EmailTemplateSelectType
+        tags:
+            - { name: form.type, alias: email_template_select }

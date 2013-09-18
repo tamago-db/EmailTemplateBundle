@@ -1,0 +1,26 @@
+{% block email_template_select_widget %}
+    <div class="controls">
+        <div>
+            {{ form_widget(form.email_template_id) }} 
+                <a href="{{ path('ccc_email_template_new') }}" class="btn btn-mini">
+                    {{ 'ccc.email-template.add'|trans({}, 'CCCEmailTemplate') }}
+                </a>
+        </div>
+        <div>{{ form_widget(form.template) }}</div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $('.email_template_ids').change(function(event){
+                if ($('.email_template_ids').val()) {
+
+                    var url = Routing.generate('ccc_email_template_json', {id: $(this).val()});
+                    $.getJSON(url, function(result) {
+                        $('.template').val(result.template);
+                        CKEDITOR.instances['EmailTemplateSelectTest_email_template_template'].setData(result.template);
+                    });
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+{% endblock %}

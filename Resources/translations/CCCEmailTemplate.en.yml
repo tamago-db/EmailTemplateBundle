@@ -1,0 +1,21 @@
+# CCCEmailTemplate.en.yml
+ccc:
+    email-template:
+        email templates: Email templates
+        create new email template: Create new email template
+        id: ID
+        title: Title
+        template: Template
+        actions: Actions
+        show: Show
+        delete: Delete
+        edit: Edit
+        add: Add
+        email: Email
+        create: Create
+        update: Update
+        delete: Delete
+        select template: Select template
+        edit email template: Edit email template
+        back to list: Back to list
+        select email template demo: Select email template demo

@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {{ 'ccc.email-template.email templates'|trans({}, 'CCCEmailTemplate') }}
+{% endblock %}
+
+{% block body -%}
+    <h1>{{ 'ccc.email-template.email templates'|trans({}, 'CCCEmailTemplate') }}</h1>
+
+    <p>
+        <a href="{{ path('ccc_email_template_new') }}" class="btn">
+            {{ 'ccc.email-template.create new email template'|trans({}, 'CCCEmailTemplate') }}
+        </a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'ccc.email-template.id'|trans({}, 'CCCEmailTemplate') }}</th>
+                <th>{{ 'ccc.email-template.title'|trans({}, 'CCCEmailTemplate') }}</th>
+                <th>{{ 'ccc.email-template.actions'|trans({}, 'CCCEmailTemplate') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('ccc_email_template_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.title }}</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-mini" href="{{ path('ccc_email_template_show', { 'id': entity.id }) }}">
+                            <i class="icon-folder-open-alt tooltip-title" title="" 
+                                data-original-title="{{ 'ccc.email-template.show'|trans({}, 'CCCEmailTemplate') }}"></i> 
+                                {{ 'ccc.email-template.show'|trans({}, 'CCCEmailTemplate') }}
+                        </a>
+                        <a class="btn btn-mini" href="{{ path('ccc_email_template_edit', { 'id': entity.id }) }}">
+                            <i class="icon-edit tooltip-title" title="" 
+                                data-original-title="{{ 'ccc.email-template.edit'|trans({}, 'CCCEmailTemplate') }}"></i> 
+                                {{ 'ccc.email-template.edit'|trans({}, 'CCCEmailTemplate') }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
