@@ -37,7 +37,7 @@ public function registerBundles()
 ### Update your packages
 
 ``` bash
-$ php composer.phar update ccc/email-template-bundle
+$ php composer.phar update
 ```
 
 ### Update your database schema
@@ -56,6 +56,7 @@ sure you have translator enabled in your config.
 
 framework:
     translator: ~
+```
 
 Usage
 -----
