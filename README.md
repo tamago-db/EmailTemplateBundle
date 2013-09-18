@@ -76,7 +76,12 @@ Routes
 Available in config/routing/emailtemplate.yml
 
 /email-template/ - lists all templates available
+
 /email-template/new - create a new template
+
 /email-template/{id}/show - show the details of a template
+
 /email-template/{id}/edit - edit a template
+
 /email-template/{id}/delete - delete a template
+
