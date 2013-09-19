@@ -2,7 +2,7 @@
     "name": "ccc/email-template-bundle",
     "type": "symfony-bundle",
     "description": "Twig extension for quick integration of email templates that you manage in the database",
-    "keywords": ["symfony", "fyneworks", "email-templates", "form", "twig"],
+    "keywords": ["symfony", "form-type", "email-templates", "form", "twig"],
     "homepage": "http://github.com/cc-consulting/EmailTemplateBundle",
     "license": ["MIT"],
     "authors": [
