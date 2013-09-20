@@ -17,9 +17,9 @@ class templateControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('html:contains("email templates")')->count() > 0);
         
         // Go to CREATE entity
-        $crawler = $client->click($crawler->selectLink('create new email template')->link());
+        $crawler = $client->click($crawler->selectLink('Create new email template')->link());
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /email-template/new");
-        $this->assertTrue($crawler->filter('html:contains("create new email template")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Create new email template")')->count() > 0);
         
         // CREATE entity 
         $form = $crawler->selectButton('ccc_email_template[submit]')->form();
@@ -34,9 +34,9 @@ class templateControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('dd:contains("New email template")')->count(), 'Missing element dd:contains("New email template")');
 
         // Go to EDIT for entity
-        $crawler = $client->click($crawler->selectLink('edit')->link());
+        $crawler = $client->click($crawler->selectLink('Edit')->link());
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /email-template/1/edit");
-        $this->assertTrue($crawler->filter('html:contains("edit email template")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Edit email template")')->count() > 0);
         
         // EDIT the entity
         $form = $crawler->selectButton('ccc_email_template[submit]')->form();
