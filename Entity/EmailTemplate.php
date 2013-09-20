@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * EmailTemplate
  *
- * @ORM\Table(name="ccc_email_template")
+ * @ORM\MappedSuperclass
  * @ORM\Entity(repositoryClass="CCC\EmailTemplateBundle\Entity\EmailTemplateRepository")
  */
 class EmailTemplate
