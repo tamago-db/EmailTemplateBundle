@@ -46,6 +46,15 @@ $ php composer.phar update
 $ php app/console doctrine:schema:update
 ```
 
+### Add routes
+
+``` yaml
+# app/config/routing.yml
+ccc_email_template:
+    resource: "@CCCEmailTemplateBundle/Resources/config/routing.yml"
+    prefix:   /
+```
+
 ### Translations
 
 If you wish to use default text provided in this bundle, you have to make
