@@ -1,0 +1,11 @@
+<h1>{{ 'ccc.email-template.edit email template'|trans({}, 'CCCEmailTemplate') }}</h1>
+
+{{ form(edit_form) }}
+
+<p>
+    <a href="{{ path('ccc_email_template') }}">
+        {{ 'ccc.email-template.back to list'|trans({}, 'CCCEmailTemplate') }}
+    </a>
+    &nbsp;
+    {{ form(delete_form) }}
+</p>

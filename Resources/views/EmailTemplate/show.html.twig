@@ -5,28 +5,5 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>{{ entity.title }}</h1>
-
-    <dl class="dl-horizontal">
-            <dt>{{ 'ccc.email-template.id'|trans({}, 'CCCEmailTemplate') }}</dt>
-            <dd>{{ entity.id }}</dd>
-                
-            <dt>{{ 'ccc.email-template.title'|trans({}, 'CCCEmailTemplate') }}</dt>
-            <dd>{{ entity.title }}</dd>
-            
-            <dt>{{ 'ccc.email-template.template'|trans({}, 'CCCEmailTemplate') }}</dt>
-            <dd>{{ entity.template }}</dd>
-    </dl>
-
-    <p>
-        <a href="{{ path('ccc_email_template') }}">
-            {{ 'ccc.email-template.back to list'|trans({}, 'CCCEmailTemplate') }}
-        </a>
-        &nbsp;
-        <a href="{{ path('ccc_email_template_edit', { 'id': entity.id }) }}" class="btn">
-            {{ 'ccc.email-template.edit'|trans({}, 'CCCEmailTemplate') }}
-        </a>
-        &nbsp;
-        {{ form(delete_form) }}
-    </p>
+{% include "CCCEmailTemplateBundle:EmailTemplate:show_content.html.twig" %}     
 {% endblock %}
