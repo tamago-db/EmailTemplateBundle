@@ -41,16 +41,18 @@ class EmailTemplateController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new EmailTemplate();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm();
         $form->handleRequest($request);
+        $entity = $form->getData();
+        $entity->setUser($this->get('security.context')->getToken()->getUser());
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ccc_email_template_show', array('id' => $entity->getId())));
+            // Back to where we came from
+            return $this->redirect($request->headers->get('referer'));
         }
 
         return $this->render('CCCEmailTemplateBundle:EmailTemplate:new.html.twig', array(
@@ -66,18 +68,20 @@ class EmailTemplateController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(EmailTemplate $entity)
+    private function createCreateForm(EmailTemplate $entity = null)
     {
-        $form = $this->createForm(new EmailTemplateType(), $entity, array(
+        $form = $this->createForm($this->get('email_template_create.form.type'), $entity, array(
             'action' => $this->generateUrl('ccc_email_template_create'),
             'method' => 'POST',
+            'attr' => array('id' => 'ccc_email_template_new')
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'ccc.email-template.create', 
-            'translation_domain' => 'CCCEmailTemplate',                
-            'attr' => array('class' => 'btn')
-        ));
+// @todo Let the rendering template add the submit button?
+//        $form->add('submit', 'submit', array(
+//            'label' => 'ccc.email-template.create',
+//            'translation_domain' => 'CCCEmailTemplate',
+//            'attr' => array('class' => 'btn')
+//        ));
 
         return $form;
     }
@@ -88,12 +92,10 @@ class EmailTemplateController extends Controller
      */
     public function newAction()
     {
-        $entity = new EmailTemplate();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm();
 
         return $this->render('CCCEmailTemplateBundle:EmailTemplate:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -272,7 +274,6 @@ class EmailTemplateController extends Controller
             'form'   => $form->createView(),
         ));
     }
-    
     
 
     /**

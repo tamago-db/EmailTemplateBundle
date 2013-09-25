@@ -11,6 +11,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use CCC\EmailTemplateBundle\Form\Type\EmailTemplateSelectType;
 
+/**
+ * @todo Deprecate?
+ */
 class EmailTemplateSelectTestType extends AbstractType
 {
         /**

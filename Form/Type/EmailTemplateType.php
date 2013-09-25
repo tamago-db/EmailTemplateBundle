@@ -41,7 +41,7 @@ class EmailTemplateType extends AbstractType
             )
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -57,6 +57,6 @@ class EmailTemplateType extends AbstractType
      */
     public function getName()
     {
-        return 'ccc_email_template';
+        return 'email_template_create';
     }
 }
