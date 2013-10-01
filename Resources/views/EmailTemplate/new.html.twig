@@ -1,9 +1,9 @@
-{#{% extends '::base.html.twig' %}#}
+{% extends 'CCCEmailTemplateBundle::layout.html.twig' %}
 
 {% block title %}
     {{ 'ccc.email-template.create new email template'|trans({}, 'CCCEmailTemplate') }}
 {% endblock %}
 
-{% block body -%}
-{% include "CCCEmailTemplateBundle:EmailTemplate:new_content.html.twig" %}        
+{% block body %}
+    {{ form(form) }}
 {% endblock %}

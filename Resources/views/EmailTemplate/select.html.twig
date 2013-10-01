@@ -1,16 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends 'CCCEmailTemplateBundle::layout.html.twig' %}
 
 {% block title %}
     {{ 'ccc.email-template.select email template demo'|trans({}, 'CCCEmailTemplate') }}
 {% endblock %}
 
-{% block body -%}
-
+{% block body %}
     {% block form %}
-
-    <legend>{{ 'ccc.email-template.select email template demo'|trans({}, 'CCCEmailTemplate') }}</legend>
-    {{ form_row(form.email_template) }}
-    
+        <legend>{{ 'ccc.email-template.select email template demo'|trans({}, 'CCCEmailTemplate') }}</legend>
+        {{ form_row(form.email_template) }}
     {% endblock %}
 
     <p>

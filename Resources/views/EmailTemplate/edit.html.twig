@@ -1,9 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends 'CCCEmailTemplateBundle::layout.html.twig' %}
 
 {% block title %}
     {{ 'ccc.email-template.edit email template'|trans({}, 'CCCEmailTemplate') }}
 {% endblock %}
 
-{% block body -%}
-{% include "CCCEmailTemplateBundle:EmailTemplate:edit_content.html.twig" %}
+{% block body %}
+    {{ form(edit_form) }}
+
+    <p>
+        <a href="{{ path('ccc_email_template') }}">
+            {{ 'ccc.email-template.back to list'|trans({}, 'CCCEmailTemplate') }}
+        </a>
+        &nbsp;
+        {{ form(delete_form) }}
+    </p>
 {% endblock %}
