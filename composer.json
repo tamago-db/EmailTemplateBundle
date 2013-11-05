@@ -13,8 +13,7 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "symfony/form": ">=2.2,<2.4-dev",
-
+        "symfony/form": "~2.2",
         "friendsofsymfony/jsrouting-bundle": "~1.1",
         "egeloen/ckeditor-bundle": "2.*"
     },
