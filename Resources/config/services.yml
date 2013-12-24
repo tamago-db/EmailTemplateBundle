@@ -1,11 +1,14 @@
 services:
-    email_template_create.form.type:
+    # @todo How do we do this like FOSUserBundle?
+    ccc_email_template.entity:
+        class: CCC\EmailTemplateBundle\Entity\EmailTemplate
+
+    ccc_email_template.form.type.create:
         class: CCC\EmailTemplateBundle\Form\Type\EmailTemplateType
         tags:
-            - { name: form.type, alias: email_template_create }
+            - { name: form.type }
 
-    email_template_select.form.type:
+    ccc_email_template.form.type.select:
         class: CCC\EmailTemplateBundle\Form\Type\EmailTemplateSelectType
         tags:
-            - { name: form.type, alias: email_template_select }
-
+            - { name: form.type }

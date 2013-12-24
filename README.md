@@ -1,8 +1,8 @@
 CCCEmailTemplateBundle
-===================
+======================
 
-Email template form type with AJAX (using jquery) to populate a ckeditor(textarea) and list/insert/update/delete pages 
-to manage email templates in the database.
+Email template form type with Ajax (using jQuery) to populate a textarea field and list/insert/update/delete pages
+to manage email templates in a Doctrine-managed database.  Highly experimental and subject to change.  Use at your own risk.
 
 Installation
 ------------
@@ -12,8 +12,6 @@ Installation
 ``` json
 {
     "require": {
-        "friendsofsymfony/jsrouting-bundle": "~1.1",
-        "egeloen/ckeditor-bundle": "2.*",
         "ccc/email-template-bundle": "dev-master"
         ...
     }
@@ -28,7 +26,6 @@ public function registerBundles()
     $bundles = array(
         // ...
         new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-        new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         new CCC\EmailTemplateBundle\EmailTemplateBundle(),
         // ...
     );
@@ -81,16 +78,12 @@ $builder
 See /email-template/select for an example
 
 Routes
------
+------
 Available in config/routing/emailtemplate.yml
 
-/email-template/ - lists all templates available
-
-/email-template/new - create a new template
-
-/email-template/{id}/show - show the details of a template
-
-/email-template/{id}/edit - edit a template
-
-/email-template/{id}/delete - delete a template
+* `/email-template/` - lists all templates available
+* `/email-template/new` - create a new template
+* `/email-template/{id}/show` - show the details of a template
+* `/email-template/{id}/edit` - edit a template
+* `/email-template/{id}/delete` - delete a template
 

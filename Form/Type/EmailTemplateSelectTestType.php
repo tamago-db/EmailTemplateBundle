@@ -16,7 +16,7 @@ use CCC\EmailTemplateBundle\Form\Type\EmailTemplateSelectType;
  */
 class EmailTemplateSelectTestType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */

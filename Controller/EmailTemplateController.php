@@ -16,10 +16,24 @@ use CCC\EmailTemplateBundle\Form\Type\EmailTemplateSelectTestType;
 
 /**
  * EmailTemplate controller.
- *
+ * @todo Pay attention to authentication; security in general.
  */
 class EmailTemplateController extends Controller
 {
+    private $repository;
+
+    /**
+     * Lazily load the repository.  @todo Can we do this more like FOSUserBundle such that we don't have to instantiate
+     * the EmailTemplate class?
+     */
+    private function getRepository()
+    {
+        if (! $this->repository) {
+            $em = $this->getDoctrine()->getManager();
+            $this->repository = $em->getRepository(get_class($this->get('ccc_email_template.entity')));
+        }
+        return $this->repository;
+    }
 
     /**
      * Lists all EmailTemplate entities.
@@ -27,10 +41,7 @@ class EmailTemplateController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->findAll();
-
+        $entities = $this->getRepository()->findAll();
         return $this->render('CCCEmailTemplateBundle:EmailTemplate:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -70,7 +81,7 @@ class EmailTemplateController extends Controller
     */
     private function createCreateForm(EmailTemplate $entity = null)
     {
-        $form = $this->createForm($this->get('email_template_create.form.type'), $entity, array(
+        $form = $this->createForm($this->get('ccc_email_template.form.type.create'), $entity, array(
             'action' => $this->generateUrl('ccc_email_template_create'),
             'method' => 'POST',
             'attr' => array('id' => 'ccc_email_template_new')
@@ -105,9 +116,7 @@ class EmailTemplateController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find EmailTemplate entity.');
@@ -126,9 +135,7 @@ class EmailTemplateController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find EmailTemplate entity.');
@@ -172,9 +179,7 @@ class EmailTemplateController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find EmailTemplate entity.');
@@ -206,8 +211,7 @@ class EmailTemplateController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->find($id);
+            $entity = $this->getRepository()->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find EmailTemplate entity.');
@@ -242,21 +246,13 @@ class EmailTemplateController extends Controller
     }
 
     /**
-     * Get email template in JSON.  Will throw template error if request is not a json mime type.
-     *
+     * Get email template message in JSON
      */
     public function jsonAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $entity = $this->getRepository()->find($id);
 
-        $entity = $em->getRepository('CCCEmailTemplateBundle:EmailTemplate')->find($id);
-        
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new GetSetMethodNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
-        
-        $response = new Response($serializer->serialize($entity, 'json'));
+        $response = new Response(json_encode(strip_tags($entity->getTemplate())));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
@@ -271,7 +267,7 @@ class EmailTemplateController extends Controller
         $form   = $this->createSelectForm();
 
         return $this->render('CCCEmailTemplateBundle:EmailTemplate:select.html.twig', array(
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
     

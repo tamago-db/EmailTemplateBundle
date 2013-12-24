@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class EmailTemplateSelectType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -30,27 +30,7 @@ class EmailTemplateSelectType extends AbstractType
                         ->orderBy('et.title', 'ASC');
                 },
             ))
-            ->add('template', 'ckeditor', array(
-                 'attr' => array(
-                     'class' => 'template'
-                 ),
-                'config' => array(
-                    'toolbar' => array(
-                        array(
-                            'name'  => 'styles',
-                            'items' => array('Format'),
-                        ),
-                        array(
-                            'name' => 'paragraph',
-                            'items' => array('NumberedList','BulletedList')
-                        ),
-                        array(
-                            'name'  => 'basicstyles',
-                            'items' => array('Bold', 'Italic', 'Underline', '-', 'RemoveFormat'),
-                        ),
-                    )
-                ),
-            ))
+            ->add('template', 'textarea')
         ;
     }
 

@@ -19,26 +19,9 @@ class EmailTemplateType extends AbstractType
                     'label' => 'ccc.email-template.title', 'translation_domain' => 'CCCEmailTemplate'
                 )
             )
-            ->add('template', 'ckeditor', array(
-                    'label' => 'ccc.email-template.template', 'translation_domain' => 'CCCEmailTemplate',
-                    'config' => array(
-                        'toolbar' => array(
-                            array(
-                                'name'  => 'styles',
-                                'items' => array('Format'),
-                            ),
-                            array(
-                                'name' => 'paragraph',
-                                'items' => array('NumberedList','BulletedList')
-                            ),
-                            array(
-                                'name'  => 'basicstyles',
-                                'items' => array('Bold', 'Italic', 'Underline', '-', 'RemoveFormat'),
-                            ),
-                        )
-                    ),
-                )
-            )
+            ->add('template', 'textarea', array(
+                'label' => 'ccc.email-template.template', 'translation_domain' => 'CCCEmailTemplate',
+            ))
         ;
     }
 

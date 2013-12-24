@@ -90,4 +90,12 @@ class EmailTemplate
     {
         return $this->template;
     }
+
+    /**
+     * Default string value of EmailTemplate is the title
+     */
+    public function __toString()
+    {
+        return (string)$this->getTitle();
+    }
 }
