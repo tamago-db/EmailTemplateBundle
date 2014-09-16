@@ -3,12 +3,16 @@
     "type": "symfony-bundle",
     "description": "Twig extension for quick integration of email templates that you manage in the database",
     "keywords": ["symfony", "form-type", "email-templates", "form", "twig"],
-    "homepage": "http://github.com/cc-consulting/EmailTemplateBundle",
+    "homepage": "http://github.com/tamago-db/EmailTemplateBundle",
     "license": ["MIT"],
     "authors": [
         {
             "name": "Michael Langford",
             "email": "michael.langford@ccconsulting.jp"
+        },
+        {
+            "name": "Evan Owens,
+            "email": "evan.owens@tamago-db.com"
         }
     ],
     "require": {
